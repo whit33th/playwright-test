@@ -23,9 +23,9 @@ test.describe("Registration on forums page", () => {
       registrationPage.elements.agreement.agreementText
     );
 
-    expect(await agreementText.isVisible()).toBeTruthy();
-    expect(await agreeButton.isVisible()).toBeTruthy();
-    expect(await disagreeButton.isVisible()).toBeTruthy();
+    await expect(agreementText).toBeVisible();
+    await expect(agreeButton).toBeVisible();
+    await expect(disagreeButton).toBeVisible();
   });
 
   test("Agree with terms", async ({ page }) => {
@@ -41,14 +41,20 @@ test.describe("Registration on forums page", () => {
   for (let user of Object.values(USER_DATA)) {
     //Testing various registration scenarios with different User data
     test(user.testName, async ({ page }) => {
-      await registrationPage.acceptTerms();
-
       await expect(async () => {
-        const isVisible = await page
-          .locator(registrationPage.elements.form.usernameInput)
+        const isCookieButtonVisible = await page
+          .locator(registrationPage.elements.cookies.acceptButton)
           .isVisible();
-        if (!isVisible) await registrationPage.acceptTerms();
-        return isVisible;
+
+        if (isCookieButtonVisible) {
+          await page
+            .locator(registrationPage.elements.cookies.acceptButton)
+            .click();
+        }
+        await registrationPage.acceptTerms();
+        await expect(
+          page.locator(registrationPage.elements.form.usernameInput)
+        ).toBeVisible({ timeout: 2000 });
       }).toPass({ timeout: 12000 });
 
       await registrationPage.fillRegistrationForm(user);

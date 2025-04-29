@@ -11,6 +11,7 @@ export class RegistrationPage extends AbstractPage {
   private button: Button;
 
   readonly elements = {
+    cookies: { acceptButton: SELECTORS.cookies.acceptButton },
     agreement: {
       disagreeButton: SELECTORS.forums.registration.agreement.disagreeButton,
       agreeButton: SELECTORS.forums.registration.agreement.agreeButton,
@@ -39,7 +40,7 @@ export class RegistrationPage extends AbstractPage {
 
   async acceptTerms(): Promise<void> {
     await this.button.clickAndWait(this.elements.agreement.agreeButton, {
-      timeout: 30000,
+      timeout: 20000,
       waitUntil: "domcontentloaded",
     });
   }
