@@ -21,3 +21,16 @@ tests/
 ├── specs/      # Test scenarios
 └── utils/      # Helper utilities
 ```
+
+## The task requirements are provided in the file SDET_task_1.pdf (In root folder)
+
+## Setup and Execution
+
+```bash
+# Install dependencies
+pnpm install
+
+# Run tests
+pnpm playwright test
+
+```
