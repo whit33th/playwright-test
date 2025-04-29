@@ -1,8 +1,8 @@
 import { Page } from "@playwright/test";
-import { Button } from "../components/Button";
-import { Link } from "../components/Link";
-import { SELECTORS } from "../config/selectors";
-import { AbstractPage } from "./AbstractPage";
+import { Button } from "../../components/Button";
+import { Link } from "../../components/Link";
+import { SELECTORS } from "../../config/selectors";
+import { AbstractPage } from "../AbstractPage";
 
 export class LandingPage extends AbstractPage {
   private link: Link;

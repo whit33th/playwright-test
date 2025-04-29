@@ -1,7 +1,7 @@
 import test, { expect } from "@playwright/test";
 import { ENDPOINTS } from "../../config/endpoints";
 import { SELECTORS } from "../../config/selectors";
-import { LandingPage } from "../../pages/LandingPage";
+import { LandingPage } from "../../pages/Landing/LandingPage";
 import { acceptCookies } from "../../utils/Cookies";
 
 test.describe("Landing page tests", () => {
