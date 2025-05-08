@@ -18,9 +18,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        run: npm install -g pnpm
 
       - name: Install dependencies
-        run: pnpm i
+        run: pnpm install
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
@@ -28,7 +32,7 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test
 
-      - name: Upload test results
+      - name: Upload Playwright report on failure
         if: failure()
         uses: actions/upload-artifact@v4
         with:
