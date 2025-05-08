@@ -14,7 +14,7 @@ export const SELECTORS = {
     registration: {
       agreement: {
         div: "#agreement",
-        agreeButton: "input[name='agreed']",
+        agreeButton: "inpu[name='agreed']",
         disagreeButton: "input[name='not_agreed']",
         agreementText: ".agreement",
       },
